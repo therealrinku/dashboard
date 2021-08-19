@@ -2,8 +2,7 @@ import "../styles/homepage.css";
 import Select from "../components/Select";
 import Input from "../components/Input";
 import Table from "../components/Table";
-import { useState, useEffect } from "react";
-import { Doughnut } from "react-chartjs-2";
+import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 
 export default function Homepage() {
@@ -98,56 +97,6 @@ export default function Homepage() {
 		}
 	);
 
-	const doughnutData = {
-		labels: [
-			"Free Plan",
-			"Plan 1",
-			"Plan 2",
-			"Plan3",
-			"Plan 6",
-			"Plan 12",
-			"Plan Unlimited",
-		],
-		datasets: [
-			{
-				label: "# of Votes",
-				data: [
-					users.length - subscriptions.length,
-					subscriptions.filter((sub) => sub.package === "Plan 1")
-						.length,
-					subscriptions.filter((sub) => sub.package === "Plan 2")
-						.length,
-					subscriptions.filter((sub) => sub.package === "Plan3")
-						.length,
-					subscriptions.filter((sub) => sub.package === "Plan 6")
-						.length,
-					subscriptions.filter((sub) => sub.package === "Plan 12")
-						.length,
-					subscriptions.filter(
-						(sub) => sub.package === "Plan Unlimited"
-					).length,
-				],
-				backgroundColor: [
-					"rgba(255, 99, 132, 0.2)",
-					"rgba(54, 162, 235, 0.2)",
-					"rgba(255, 206, 86, 0.2)",
-					"rgba(75, 192, 192, 0.2)",
-					"rgba(153, 102, 255, 0.2)",
-					"rgba(255, 159, 64, 0.2)",
-				],
-				borderColor: [
-					"rgba(255, 99, 132, 1)",
-					"rgba(54, 162, 235, 1)",
-					"rgba(255, 206, 86, 1)",
-					"rgba(75, 192, 192, 1)",
-					"rgba(153, 102, 255, 1)",
-					"rgba(255, 159, 64, 1)",
-				],
-				borderWidth: 1,
-			},
-		],
-	};
-
 	return (
 		<div className="homepage">
 			{loading ? (
@@ -157,7 +106,16 @@ export default function Homepage() {
 					<h4>Users Dashboard</h4>
 
 					<div className="summary">
-						<Doughnut data={doughnutData} />
+						<p>
+							<b>Total Users</b>:{users.length}
+						</p>
+						<p>
+							<b>Free Plan Users</b>:
+							{users.length - subscriptions.length}
+						</p>
+						<p>
+							<b>Paid Plan Users</b>:{subscriptions.length}
+						</p>
 					</div>
 
 					<div className="toolbar">
@@ -192,6 +150,7 @@ export default function Homepage() {
 						/>
 					</div>
 
+					<p>Showing {sortedTableContents.length} Users</p>
 					<Table
 						tableHeaders={tableHeaders}
 						tableContents={sortedTableContents}
