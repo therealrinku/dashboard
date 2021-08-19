@@ -5,6 +5,7 @@
 
 .homepage .toolbar {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .loading-view {
@@ -17,6 +18,13 @@
 }
 
 .summary {
-	margin: 20px auto;
-	width: 350px;
+	margin: 20px 0;
+	background: whitesmoke;
+	padding: 10px;
+	display: flex;
 }
+
+.summary p {
+	margin-right: 10px;
+}
+
