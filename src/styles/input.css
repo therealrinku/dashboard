@@ -1,0 +1,19 @@
+.input {
+  padding: 5px 8px;
+  height: 20px;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.input:disabled {
+  color: black;
+}
+
+.input:disabled:hover {
+  cursor: unset;
+}
+
+.input:focus {
+  box-shadow: 0 0 0.5pt 1pt #4aa96c;
+}

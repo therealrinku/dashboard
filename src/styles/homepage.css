@@ -1,0 +1,22 @@
+.homepage {
+	width: 90vw;
+	margin: auto;
+}
+
+.homepage .toolbar {
+	display: flex;
+}
+
+.loading-view {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.summary {
+	margin: 20px auto;
+	width: 350px;
+}
